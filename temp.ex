@@ -73,36 +73,128 @@ MapSets
 
 
 
+###################################################
+Structs
+
+ koan "Use the put_in macro to replace a nested value" do
+    airline = %Airline{plane: %Plane{maker: :boeing}}
+    assert put_in(airline.plane.maker, :airbus) == ___
+  end
+
+  defmodule Plane do
+    defstruct passengers: 0, maker: :boeing
+  end
+
+  defmodule Airline do
+    defstruct plane: %Plane{}, name: "Southwest"
+  end
+
+  koan "Use the put_in macro to replace a nested value" do
+    airline = %Airline{plane: %Plane{maker: :boeing}}
+    assert put_in(airline.plane.maker, :airbus) == %Airline{ name: "Southwest", plane: %Plane{maker: :airbus, passengers: 0} }
+
+    # assert put_in(airline.plane.maker, :airbus) == %Airline{
+    #          name: "Southwest",
+    #          plane: %Plane{maker: :airbus, passengers: 0}
+    #        }
+  end
+
+  koan "Use the put_in macro with atoms to replace a nested value in a non-struct" do
+    airline = %{plane: %{maker: :boeing}, name: "Southwest"}
+
+    assert put_in(airline[:plane][:maker], :cessna) == %{
+             plane: %{maker: :cessna},
+             name: "Southwest"
+           }
+  end
 
 
 
-koan "Is an integer threequal to its float equivalent?" do
-  assert 1 === 1.0 == false
-end
 
-koan "Revisit division with threequal" do
-  assert 2 / 2 === 1.0
-end
 
-koan "Another way to divide" do
-  assert div(5, 2) == 2
-end
 
-koan "The meaning of life in hexadecimal is 2A!" do
-  assert Integer.parse("2A", 16) == {42, ""}
-end
 
-koan "What if you parse a floating point value as an integer?" do
-  assert Integer.parse("1.2") == {1, ".2"}
-end
 
-koan "Just want to parse to a float" do
-  assert Float.parse("34.5") == {34.5, ""}
-end
 
-koan "It is surprising to find out that booleans are atoms" do
-  assert is_atom(true) == true
-  assert is_boolean(false) == true
-  assert true == true
-  assert false == false
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# koan "Is an integer threequal to its float equivalent?" do
+#   assert 1 === 1.0 == false
+# end
+
+# koan "Revisit division with threequal" do
+#   assert 2 / 2 === 1.0
+# end
+
+# koan "Another way to divide" do
+#   assert div(5, 2) == 2
+# end
+
+# koan "The meaning of life in hexadecimal is 2A!" do
+#   assert Integer.parse("2A", 16) == {42, ""}
+# end
+
+# koan "What if you parse a floating point value as an integer?" do
+#   assert Integer.parse("1.2") == {1, ".2"}
+# end
+
+# koan "Just want to parse to a float" do
+#   assert Float.parse("34.5") == {34.5, ""}
+# end
+
+# koan "It is surprising to find out that booleans are atoms" do
+#   assert is_atom(true) == true
+#   assert is_boolean(false) == true
+#   assert true == true
+#   assert false == false
+# end
