@@ -71,7 +71,7 @@ defmodule MapSets do
   koan "Unify my sets" do
     new_set = MapSet.union(@set, MapSet.new([1, 5, 6, 7]))
 
-    assert MapSet.size(new_set) == 7
+    assert MapSet.size(new_set) == ___
   end
 
   koan "I want my set in a list" do
