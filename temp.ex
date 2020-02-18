@@ -76,7 +76,6 @@ MapSets
 
 
 
-
 koan "Is an integer threequal to its float equivalent?" do
   assert 1 === 1.0 == false
 end
