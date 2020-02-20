@@ -35,13 +35,8 @@ defmodule PatternMatching do
 
   koan "Maps support partial pattern matching" do
     %{type: clown, make: test} = %{type: "car", year: 2016, make: "Honda", color: "black"}
-
-<<<<<<< HEAD
-    assert make == "Honda"
-=======
     assert clown == "car"
     assert test == "Honda"
->>>>>>> master
   end
 
   koan "Lists must match exactly" do
@@ -69,9 +64,9 @@ defmodule PatternMatching do
     dog = %{type: "dog"}
     snake = %{type: "snake"}
 
-    assert make_noise(cat) == ___
-    assert make_noise(dog) == ___
-    assert make_noise(snake) == ___
+    assert make_noise(cat) == "Meow"
+    assert make_noise(dog) == "Woof"
+    assert make_noise(snake) == "Eh?"
   end
 
   koan "And they will only run the code that matches the argument" do
@@ -81,9 +76,9 @@ defmodule PatternMatching do
       _other -> "I need a name!"
     end
 
-    assert name.("mouse") == ___
-    assert name.("duck") == ___
-    assert name.("donkey") == ___
+    assert name.("mouse") == "Donald"
+    assert name.("duck") == "Mickey"
+    assert name.("donkey") == "I need a name"
   end
 
   koan "Errors are shaped differently than successful results" do
