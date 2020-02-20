@@ -34,9 +34,14 @@ defmodule PatternMatching do
   end
 
   koan "Maps support partial pattern matching" do
-    %{make: make} = %{type: "car", year: 2016, make: "Honda", color: "black"}
+    %{type: clown, make: test} = %{type: "car", year: 2016, make: "Honda", color: "black"}
 
+<<<<<<< HEAD
     assert make == "Honda"
+=======
+    assert clown == "car"
+    assert test == "Honda"
+>>>>>>> master
   end
 
   koan "Lists must match exactly" do
