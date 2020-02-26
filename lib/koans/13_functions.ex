@@ -8,7 +8,7 @@ defmodule Functions do
   end
 
   koan "Functions map arguments to outputs" do
-    assert greet("World") == ___
+    assert greet("World") == "Hello World!"
   end
 
   def multiply(a, b), do: a * b
