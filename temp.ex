@@ -1,3 +1,37 @@
+functions
+
+
+  def first(foo, bar), do: "#{foo} and #{bar}"
+  def first(foo), do: "Only #{foo}"
+
+  koan "Functions with the same name are distinguished by the number of arguments they take" do
+    assert first("One", "Two") == "One and Two"
+    assert first("One") == "One"
+  end
+
+
+
+  koan "Little anonymous functions are common, and called with a dot" do
+    multiply = fn a, b -> a * b end
+    assert multiply.(2, 3) == 6
+  end
+
+  koan "You can even go shorter, by using capture syntax `&()` and positional arguments" do
+    multiply = &(&1 * &2)
+    assert multiply.(2, 3) == 6
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 https://elixircasts.io/
 https://hexdocs.pm/elixir/master/naming-conventions.html
 https://youtu.be/lxYFOM3UJzo
