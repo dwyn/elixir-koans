@@ -13,12 +13,24 @@ defmodule Functions do
 
   def multiply(a, b), do: a * b
 
+  # def multiply(a, b) do
+  #   a * b
+  # end
+
   koan "Single line functions are cool, but mind the comma and the colon!" do
     assert 6 == multiply(2, 3)
   end
 
-  def first(foo, bar), do: "#{foo} and #{bar}"
-  def first(foo), do: "Only #{foo}"
+  # def first(foo, bar), do: "#{foo} and #{bar}"
+  def first(foo, bar) do
+    "#{foo} and #{bar}"
+  end
+
+  def first(foo) do
+    "Only #{foo}"
+  end
+
+  # def first(foo), do: "Only #{foo}"
 
   koan "Functions with the same name are distinguished by the number of arguments they take" do
     assert first("One", "Two") == "One and Two"
@@ -28,6 +40,10 @@ defmodule Functions do
   def repeat_again(message, times \\ 5) do
     String.duplicate(message, times)
   end
+
+  #   def repeat_again(message, times=5)
+
+  # end
 
   koan "Functions can have default argument values" do
     assert repeat_again("Hello ") == "Hello Hello Hello Hello Hello "
@@ -75,7 +91,7 @@ defmodule Functions do
 
   koan "You can build anonymous functions out of any elixir expression by prefixing it with &" do
     three_times = &[&1, &1, &1]
-    assert three_times.("foo") == ___
+    assert three_times.("foo") == ["foo", "foo", "foo"]
   end
 
   koan "You can use pattern matching to define multiple cases for anonymous functions" do
@@ -84,20 +100,20 @@ defmodule Functions do
       {:error, reason} -> "You just lost #{reason}"
     end
 
-    assert inspirational_quote.({:ok, "no accident"}) == ___
-    assert inspirational_quote.({:error, "the game"}) == ___
+    assert inspirational_quote.({:ok, "no accident"}) == "Success is no accident"
+    assert inspirational_quote.({:error, "the game"}) == "You just lost the game"
   end
 
   def times_five_and_then(number, fun), do: fun.(number * 5)
   def square(number), do: number * number
 
   koan "You can pass functions around as arguments. Place an '&' before the name and state the arity" do
-    assert times_five_and_then(2, &square/1) == ___
+    assert times_five_and_then(2, &square/1) == 100
   end
 
   koan "The '&' operation is not needed for anonymous functions" do
     cube = fn number -> number * number * number end
-    assert times_five_and_then(2, cube) == ___
+    assert times_five_and_then(2, cube) == 1000
   end
 
   koan "The result of a function can be piped into another function as its first argument" do
@@ -107,7 +123,7 @@ defmodule Functions do
       |> Enum.map(&String.capitalize/1)
       |> Enum.join(" ")
 
-    assert result == ___
+    assert result == "Full Name"
   end
 
   koan "Conveniently keyword lists can be used for function options" do
@@ -119,7 +135,7 @@ defmodule Functions do
       end
     end
 
-    assert transform.("good", upcase: true) == ___
-    assert transform.("good", upcase: false) == ___
+    assert transform.("good", upcase: true) == "GOOD"
+    assert transform.("good", upcase: false) == "good"
   end
 end
