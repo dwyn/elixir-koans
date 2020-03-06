@@ -27,8 +27,9 @@
                         'Elixir.SampleKoan','Elixir.Sigils',
                         'Elixir.SingleArity','Elixir.Strings',
                         'Elixir.Structs','Elixir.Structs.Airline',
-                        'Elixir.Structs.Plane','Elixir.Tasks',
-                        'Elixir.Tracker','Elixir.Tuples','Elixir.Watcher']},
+                        'Elixir.Structs.Person','Elixir.Structs.Plane',
+                        'Elixir.Tasks','Elixir.Tracker','Elixir.Tuples',
+                        'Elixir.Watcher']},
               {registered,[]},
               {vsn,"0.0.1"},
               {mod,{'Elixir.ElixirKoans',[]}}]}.
